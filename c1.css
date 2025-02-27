@@ -1,0 +1,458 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #181818;
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 1px 50px;
+    position: fixed;
+    width: 95%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 50px;
+    transition: filter 0.3s ease;
+}
+
+.logo img:hover {
+    filter: drop-shadow(0 0 10px #00a8e1); /* Glow effect on hover */
+    cursor: pointer; /* Change cursor to indicate it's clickable (optional) */
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+    padding: 10px 10px; /* Add some padding to the links */
+    border-radius: 5px; /* Round the corners */
+}
+
+nav ul li a:hover {
+    /* Glowing box shadow effect */
+    box-shadow: 0 0 10px #00a8e1; /* Adjust color and blur radius */
+    background-color: #00a8e1; /* Subtle background color */
+    color: #f2f6f8; /* Text color change on hover */
+}
+
+/* Dropdown Styling */
+.account-dropdown {
+    position: relative;
+background-color: #000;
+    display: inline-block;
+}
+
+.account-dropdown .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);  
+    left: 0;
+    background-color: #222;
+    border-radius: 5px;
+    display: none;
+    list-style: none;
+    padding: 0;
+    min-width: 150px;
+}
+
+.account-dropdown .dropdown-menu li {
+    display: block;
+}
+
+.account-dropdown .dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.account-dropdown .dropdown-menu li a:hover {
+    background-color: #00a8e1;
+}
+
+/* Show dropdown on hover */
+.account-dropdown:hover .dropdown-menu {
+    display: block;
+}
+.search-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .search-icon {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .search-input {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 0;
+    left: 40px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .dropdown-menu {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow wrapping */
+    flex-direction: column; /* Arrange items vertically */
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Add scroll if needed */
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none; /* Initially hidden */
+}
+
+.account-dropdown:hover .dropdown-menu{
+  display:block;
+}
+
+.dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+    display: inline-block; /* Or inline-flex */
+    padding: 5px;
+    white-space: nowrap; /* Prevent language names from breaking */
+}
+  /* Show the input when the checkbox is checked */
+  #search-toggle:checked + .search-input {
+    display: block;
+  }
+  
+  /* Hide the icon when the checkbox is checked (optional - for a cleaner look) */
+  #search-toggle:checked + .search-input ~ .search-icon {
+    display: none;
+  }
+
+  /* Optional: Style the search input on focus */
+  .search-input:focus {
+    outline: none;
+    border-color: #007bff; /* Example: Highlight on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); /* Subtle shadow */
+  }
+
+/* Banner Slider */
+.banner-slider {
+    margin-top: 70px; /* Adjusted margin to account for fixed header */
+    height: 60rem;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for absolute positioning of banner info */
+    
+}
+
+.banner-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.banner-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px; /* Increased padding */
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transform for smooth scaling */
+    transform: translateY(20px); /* Start slightly below its final position */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: left; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text */
+    word-wrap: break-word; /* Key for wrapping text within the container */
+}
+.banner-slider:hover .banner-info {
+    opacity: 1; /* Show the banner info on hover */
+}
+
+/* Movie Section */
+.movies-section {
+    margin: 50px 100px;
+}
+
+.movies-section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    border-left: 4px solid #00a8e1;
+    padding-left: 10px;
+}
+.movies-section h2,  /* Target the <h2> heading */
+.movie-card {       /* Target the individual movie cards */
+    transition: transform 0.3s ease, /* Smooth scale transition */
+                filter 0.3s ease;    /* Smooth filter (glow) transition */
+}
+
+.movies-section h2:hover,
+.movie-card:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+    filter: drop-shadow(0 0 10px #00a8e1); /* Glow effect on hover */
+}
+
+
+/* Movie Row */
+.movies-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    padding-bottom: 50px;
+    height: 300px;
+    width: 100%;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.movies-row::-webkit-scrollbar {
+    display: none;
+}
+
+/* Movie Card */
+.movie-card {
+    width: 200px;
+    height: 300px;
+    background-color: #222;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    overflow: hidden; /* Important: Prevents content from overflowing */
+}
+
+.movie-card:hover {
+    transform: scale(1.15);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    word-wrap: break-word; /* Wrap text here as well */
+}
+
+.movie-card:hover .movie-info {
+    opacity: 1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #000;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer img {
+    width: 100px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #777;
+}
+
+.movie-card {
+    position: relative; /* Needed for absolute positioning of button */
+    overflow: hidden; /* Hide any button overflow */
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%; /* Make sure image fills the card */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    display: block;
+}
+
+.movie-card .watch-now-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the button */
+    background-color: #00a8e1; /* Semi-transparent background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    border-radius: 5px;
+    font-size: 16px; /* Adjust font size */
+}
+
+.movie-card:hover .watch-now-button {
+    opacity: 1; /* Show button on hover */
+}
+
+.movie-card .movie-info { /* Adjust movie info position if needed */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    padding: 5px; /* Reduced padding */
+    font-size: 10px; /* Match the font size in your CSS */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(100%); /* Start below the card */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.movie-card:hover .movie-info{
+  opacity: 1;
+  transform: translateY(0%);
+}
+/* -------------------- Mobile Specific Styles -------------------- */
+@media (max-width: 767px) {
+    /* Header adjustments for mobile */
+    header {
+        padding: 1px 10px; /* Reduced padding */
+    }
+
+    nav ul {
+        gap: 5px; /* Smaller gap between nav items */
+    }
+
+    nav ul li a {
+        font-size: 12px; /* Smaller font size */
+        padding: 5px 5px; /* Smaller padding */
+    }
+
+    .logo img {
+        width: 40px; /* Smaller logo */
+    }
+
+    /* Banner adjustments for mobile */
+    .banner-slider {
+        height: 30rem; /* Reduced banner height */
+        margin-top: 50px; /* Adjusted margin */
+    }
+
+    .banner-info {
+      font-size: 14px;
+      padding: 5px;
+    }
+
+    /* Movie section adjustments for mobile */
+    .movies-section {
+        margin: 20px 10px; /* Reduced margins */
+    }
+
+    .movies-section h2 {
+        font-size: 18px; /* Smaller heading font */
+    }
+
+    /* Movie row adjustments for mobile */
+    .movies-row {
+        height: 150px; /* Reduced row height */
+        gap: 5px; /* Smaller gap between movies */
+        padding: 5px; /* Reduced padding */
+        padding-bottom: 20px; /* Reduced bottom padding */
+    }
+
+    /* Movie card adjustments for mobile */
+    .movie-card {
+        width: 90px; /* Smaller card width */
+        height: 135px; /* Smaller card height */
+        border-radius: 8px; /* Smaller border radius */
+    }
+    .movie-card .watch-now-button{
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+    .movie-info{
+      font-size: 8px;
+    }
+}
+/* -------------------- Tablet Specific Styles -------------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+    header {
+        padding: 1px 30px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .banner-slider {
+        height: 50rem;
+        margin-top: 65px;
+    }
+
+    .movies-section {
+        margin: 40px 30px;
+    }
+
+    .movies-section h2 {
+        font-size: 20px;
+    }
+
+    .movies-row {
+        height: 250px;
+        gap: 15px;
+        padding: 15px;
+        padding-bottom: 40px;
+    }
+
+    .movie-card {
+        width: 150px;
+        height: 225px;
+        border-radius: 12px;
+    }
+}
